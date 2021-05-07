@@ -1,4 +1,3 @@
-
 #pragma once
 #include <cstring>
 #include <iostream>
@@ -28,7 +27,6 @@ private:
     File* location, *correct, *binstore;
 public:
     Manager() : place(0), first_avail(0), page_fault(0), page_total(0) {
-
         location  = new File("../data/addresses.txt");
         correct = new File("../data/correct.txt");
         binstore  = new File("../data/BACKING_STORE.bin");
@@ -91,14 +89,12 @@ public:
     }
 
     void simulate() {
-
         int total{}; 
         int total_correct{};
         int value; 
         int correct_value;
 
         for(int var{}; var < SIMULATION_SIZE; ++var, ++total) {
-
             value = this->getVal(location->getAddress()); 
             correct_value = correct->parseValue();
             printf("Correct: %d\n", correct_value);
@@ -107,7 +103,7 @@ public:
             ++total_correct;
         }
         float accuracy = (float)total_correct/(float)total;
-        printf("----Accuracy: %.0f%%----", accuracy*100.0); 
+        printf("----Accuracy: %.0f%%----", accuracy * 100.0); 
 
         auto hits = tlb.getHits();
         auto misses = tlb.getMisses();
